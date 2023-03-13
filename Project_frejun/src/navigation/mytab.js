@@ -9,7 +9,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
-const MyTabs: React.FC = () => {
+const MyTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
