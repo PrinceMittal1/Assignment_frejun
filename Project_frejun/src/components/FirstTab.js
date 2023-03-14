@@ -1,13 +1,16 @@
 import {View, Text, FlatList, Pressable, StyleSheet} from 'react-native';
 import {useState, useEffect} from "react"
 import addingalldata from '../redux/actions';
+import { addingmoredata } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import RenderItem from './RenderItem';
+import { useIsFocused } from '@react-navigation/native';
 
 
 
 
 const Home = () => {
+  const isfocus = useIsFocused();
   const [pagenumber, setpagenumber] = useState(1);
   const dispatch = useDispatch();
 
@@ -17,18 +20,22 @@ const Home = () => {
 
 
   // for fetching data from api
-  const fetchingdata = async () =>{
-    const res = await fetch(`https://5b5cb0546a725000148a67ab.mockapi.io/api/v1/users?page=${pagenumber}&limit=10`)
+  const fetchingdata = async (page , expresion) =>{
+    console.log(page , expresion);
+    const res = await fetch(`https://5b5cb0546a725000148a67ab.mockapi.io/api/v1/users?page=${page}&limit=10`)
     const data = await res.json();
-        if(data){
-            addingalldata(data, dispatch)
+        if(data && expresion=="firsttime"){
+          addingalldata(data, dispatch)
          }
+        else if(data && expresion=="moredata"){
+          addingmoredata(data, dispatch)
+        }
   }
 
-
   useEffect(()=>{
-    fetchingdata();
-  },[])
+    fetchingdata(1, "firsttime");
+    setpagenumber(1);
+  },[isfocus])
 
   // key extractor for flat list
   const keyExtractor = (item, index) => index.toString();
@@ -39,7 +46,10 @@ const Home = () => {
       {/* button to Refresh the page  */}
       <View>
           <View style={styles.refresh_button_outer}>
-            <Pressable>
+            <Pressable onPress={()=>{
+              setpagenumber(1);
+              fetchingdata(1, "firsttime")
+            }}>
               <View style={styles.refresh_button_box}>
                  <Text style={styles.refresh_button_text}>Refresh Page</Text>
               </View>
@@ -56,14 +66,14 @@ const Home = () => {
         renderItem={RenderItem}
         maxToRenderPerBatch={10}
         onEndReached={()=>{
-          setpagenumber(pagenumber+1);
-          fetchingdata();
+          setpagenumber(prev => prev+1);
+          fetchingdata(pagenumber, "moredata");
         }}
         />
       </View>
 
       <View>
-        <Text>{pagenumber}</Text>
+        <Text style={{color:"red"}}>{pagenumber}</Text>
       </View>
 
     </View>

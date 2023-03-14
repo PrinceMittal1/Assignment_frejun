@@ -6,7 +6,7 @@ const myreducer = (storedata=mydata, action) =>{
     switch(action.type){
         // adding the new data to the store
         case "NEW" :{
-            const newmydata = [...storedata];
+            const newmydata = [];
             const mynewdata = newmydata.concat(action.info);
             return mynewdata;
         }

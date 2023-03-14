@@ -2,6 +2,7 @@ import { mystore } from "./store"
 
 // addingalldata will invoke when we send data to store in redux for the very first time 
 const addingalldata = (data, dispatch) =>{
+    console.log("adding all work");
     dispatch({
         type : "NEW",
         info : data,
