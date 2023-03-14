@@ -20,7 +20,7 @@ const Home = () => {
   
   const fetchingdata = async (page, expresion) => {
     const res = await fetch(
-      `https://5b5cb0546a725000148a67ab.mockapi.io/api/v1/users?page=${page}&limit=10`,
+      `https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=10`,
     );
     const data = await res.json();
     if (data && expresion == 'firsttime') {
@@ -45,7 +45,6 @@ const Home = () => {
 
 
       <View style={homestyles.topbar}>
-
         <View style={{flexDirection: 'row'}}>
           <Text style={{color: 'black', fontSize: 20}}>
             Page Number: {pagerender}
@@ -63,8 +62,8 @@ const Home = () => {
             </View>
           </Pressable>
         </View>
-
       </View>
+
 
       <View>
         <FlatList

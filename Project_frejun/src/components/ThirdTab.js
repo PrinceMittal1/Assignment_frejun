@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 const Thirdtab = () => {
   return (
     <View>
-      <Text>second tab</Text>
+      <Text>third tab</Text>
     </View>
   );
 };

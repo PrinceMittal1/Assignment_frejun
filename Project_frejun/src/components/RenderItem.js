@@ -1,11 +1,9 @@
 import {View, Text, Image} from 'react-native';
 
-function Newew({data, tempdata}) {
-  let time = data.substring(12, 19);
+function Stringtrimmer({data}) {
+  let time = data.substring(0, 25);
   return (
-    <View>
       <Text style={{color: 'black', fontSize:18}}>{time}</Text>
-    </View>
   );
 }
 
@@ -26,14 +24,13 @@ const RenderItem = ({item, index}) => (
       <Text style={{color:"white", fontSize:18}}>{item.id}</Text>
     </View>
 
-    <View style={{flex:5, gap:10}}>
+    <View style={{flex:5, marginTop:-5}}>
        <View style={{flexDirection:"row", alignItems:"center"}}>
-          <Text style={{color:"black"}}>Created At:-  </Text>
-          <Newew data={item.createdAt}/>
+           <Text style={{color:"black"}}>Name:- </Text>
+           <Stringtrimmer data={item.name}/>
        </View>
        <View style={{flexDirection:"row", alignItems:"center"}}>
-           <Text style={{color:"black"}}>Name:-  </Text>
-           <Text style={{color:"black", fontSize:18}}>{item.name}</Text>
+          <Text style={{color:"black"}}>Email:-  {item.email}</Text>
        </View>
     </View>
 

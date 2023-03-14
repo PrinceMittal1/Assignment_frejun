@@ -19,7 +19,7 @@ const SortingAndSearching = () => {
 
   const fetchingdata = async () => {
     const res = await fetch(
-      `https://5b5cb0546a725000148a67ab.mockapi.io/api/v1/users?page=1&limit=20`,
+      `https://jsonplaceholder.typicode.com/comments?_page=1&_limit=20`,
     );
     const data = await res.json();
     if (data) {
@@ -129,8 +129,8 @@ const SortingAndSearching = () => {
             </View>
           </Modal>
         </View>
-      </View>
 
+      </View>
 
       <View style={{marginTop: 10}}>
         <FlatList data={Data} renderItem={RenderItem} />
