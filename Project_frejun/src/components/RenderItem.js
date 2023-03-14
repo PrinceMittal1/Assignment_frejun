@@ -10,7 +10,15 @@ function Newew({data, tempdata}) {
 }
 
 const RenderItem = ({item, index}) => (
-  <View style={{padding: 10, borderWidth: 1, height: 80}}>
+  <View
+    style={{
+      padding: 10,
+      borderWidth: 1,
+      height: 80,
+      borderRadius: 15,
+      borderWidth: 1,
+      margin: 10,
+    }}>
     <Text style={{color: 'black'}}>Time Created At</Text>
     <Text style={{color: 'black'}}>
       {item.id} {item.name}
@@ -20,8 +28,3 @@ const RenderItem = ({item, index}) => (
 );
 
 export default RenderItem;
-
-// {"avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/nickfratter/128.jpg",
-// "createdAt": "2019-02-16T19:30:48.101Z",
-// "id": "25",
-// "name": "Leif McCullough"},

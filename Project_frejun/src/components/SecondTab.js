@@ -12,11 +12,12 @@ import RenderItem from './RenderItem';
 import {useDispatch, useSelector} from 'react-redux';
 import {useState, useEffect} from 'react';
 import forsorting from '../functions/sorting';
+import secondtabstyles from '../styles/secondtabstyles';
 
 const SortingAndSearching = () => {
   const [nametosearch, setnametosearch] = useState(null);
   const [Data, setData] = useState(null);
-  const [Dataforflatlist, setDataforflatlist] = useState(null);
+  const [Dataforflatlist, setforflatlist] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
 
   const fetchingdata = async () => {
@@ -26,7 +27,7 @@ const SortingAndSearching = () => {
     const data = await res.json();
     if (data) {
       setData(data);
-      setDataforflatlist(data);
+      setforflatlist(JSON.parse(JSON.stringify(data)));
     }
   };
 
@@ -38,9 +39,7 @@ const SortingAndSearching = () => {
         return a.id - b.id;
       }
     });
-    console.log(Dataforflatlist);
     setData([...newdata]);
-    console.log(Dataforflatlist);
   }
 
   function debouncing(data) {
@@ -70,15 +69,16 @@ const SortingAndSearching = () => {
   };
 
   const clearingfilterandsort = () => {
-    setData(Dataforflatlist);
+    setData([...Dataforflatlist]);
+    setnametosearch('');
   };
 
   return (
     <View>
-      <View style={styles.topbar}>
+      <View style={secondtabstyles.topbar}>
         <View style={{flex: 5, marginLeft: 5}}>
           <TextInput
-            style={styles.inputbar}
+            style={secondtabstyles.inputbar}
             placeholder="Search By Name"
             placeholderTextColor="black"
             value={nametosearch}
@@ -88,9 +88,9 @@ const SortingAndSearching = () => {
           />
         </View>
 
-        <View style={styles.clearbuttonouter}>
+        <View style={secondtabstyles.clearbuttonouter}>
           <Pressable onPress={clearingfilterandsort}>
-            <View style={styles.clearbuttoninner}>
+            <View style={secondtabstyles.clearbuttoninner}>
               <Text style={{color: 'white'}}>Clear</Text>
             </View>
           </Pressable>
@@ -98,7 +98,7 @@ const SortingAndSearching = () => {
 
         <View style={{flex: 1.5}}>
           <Pressable onPress={toggleModal}>
-            <View style={styles.sortbuttoninner}>
+            <View style={secondtabstyles.sortbuttoninner}>
               <Text style={{color: 'white'}}>Sort</Text>
             </View>
           </Pressable>
@@ -106,13 +106,13 @@ const SortingAndSearching = () => {
             visible={isModalVisible}
             animationType="slide"
             transparent={true}>
-            <View style={styles.modalbox}>
+            <View style={secondtabstyles.modalbox}>
               <Pressable
                 onPress={() => {
                   forsorting('hightolow');
                   toggleModal();
                 }}>
-                <View style={styles.lowtohighbox}>
+                <View style={secondtabstyles.lowtohighbox}>
                   <Text style={{color: 'white'}}>Sort id low to high</Text>
                 </View>
               </Pressable>
@@ -121,7 +121,7 @@ const SortingAndSearching = () => {
                   forsorting('lowtohigh');
                   toggleModal();
                 }}>
-                <View style={styles.lowtohighbox}>
+                <View style={secondtabstyles.lowtohighbox}>
                   <Text style={{color: 'white'}}>Sort id in high to low</Text>
                 </View>
               </Pressable>
@@ -139,54 +139,54 @@ const SortingAndSearching = () => {
 
 export default SortingAndSearching;
 
-const styles = StyleSheet.create({
-  topbar: {
-    flexDirection: 'row',
-    gap: 5,
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  inputbar: {
-    color: 'black',
-    fontSize: 20,
-    borderWidth: 1,
-    paddingLeft: 5,
-    borderRadius: 10,
-  },
-  clearbuttonouter: {
-    flex: 1.5,
-    justifyContent: 'center',
-  },
-  clearbuttoninner: {
-    backgroundColor: '#1D3932',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15,
-  },
-  sortbuttoninner: {
-    backgroundColor: '#1D3932',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15,
-  },
-  modalbox: {
-    width: 200,
-    height: 150,
-    alignSelf: 'center',
-    marginTop: 200,
-    borderWidth: 1,
-    backgroundColor: 'black',
-    opacity: 0.75,
-    gap: 20,
-    padding: 20,
-  },
-  lowtohighbox: {
-    backgroundColor: '#1D3932',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15,
-  },
-});
+// const styles = StyleSheet.create({
+//   topbar: {
+//     flexDirection: 'row',
+//     gap: 5,
+//     marginTop: 10,
+//     alignItems: 'center',
+//   },
+//   inputbar: {
+//     color: 'black',
+//     fontSize: 20,
+//     borderWidth: 1,
+//     paddingLeft: 5,
+//     borderRadius: 10,
+//   },
+//   clearbuttonouter: {
+//     flex: 1.5,
+//     justifyContent: 'center',
+//   },
+//   clearbuttoninner: {
+//     backgroundColor: '#1D3932',
+//     height: 40,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     borderRadius: 15,
+//   },
+//   sortbuttoninner: {
+//     backgroundColor: '#1D3932',
+//     height: 40,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     borderRadius: 15,
+//   },
+//   modalbox: {
+//     width: 300,
+//     height: 200,
+//     alignSelf: 'center',
+//     marginTop: 200,
+//     borderWidth: 1,
+//     backgroundColor: '#1D3932',
+//     opacity: 0.75,
+//     gap: 20,
+//     padding: 20,
+//   },
+//   lowtohighbox: {
+//     backgroundColor: 'black',
+//     height: 40,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     borderRadius: 15,
+//   },
+// });

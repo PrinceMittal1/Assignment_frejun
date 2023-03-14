@@ -15,13 +15,13 @@ const MyTabs = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarIcon: ({focused, color, size}) => {
-          if (route.name === 'first_tab') {
+          if (route.name === 'Home') {
             return (
               <Ionicons name={'ios-home-sharp'} size={size} color={color} />
             );
-          } else if (route.name === 'second_tab') {
+          } else if (route.name === 'SortSearch') {
             return <FontAwesome name={'edit'} size={size} color={color} />;
-          } else if (route.name === 'third_tab') {
+          } else if (route.name === 'Android') {
             return <FontAwesome name={'edit'} size={size} color={color} />;
           }
         },
@@ -39,9 +39,9 @@ const MyTabs = () => {
 
         tabBarLabelStyle: {paddingBottom: 3},
       })}>
-      <Tab.Screen name="first_tab" component={Home} />
-      <Tab.Screen name="second_tab" component={SortingAndSearching} />
-      <Tab.Screen name="third_tab" component={Thirdtab} />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="SortSearch" component={SortingAndSearching} />
+      <Tab.Screen name="Android" component={Thirdtab} />
     </Tab.Navigator>
   );
 };
