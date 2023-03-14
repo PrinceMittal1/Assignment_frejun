@@ -18,6 +18,12 @@ const homestyles = StyleSheet.create({
     color: 'white',
     fontSize: 17,
   },
+  topbar: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
 });
 
 export default homestyles;

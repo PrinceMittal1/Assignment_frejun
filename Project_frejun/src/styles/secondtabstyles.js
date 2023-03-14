@@ -38,18 +38,23 @@ const secondtabstyles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 200,
     borderWidth: 1,
-    backgroundColor: '#1D3932',
-    opacity: 0.75,
+    backgroundColor: 'black',
+    opacity:0.8,
     gap: 20,
     padding: 20,
+    borderRadius:15
   },
   lowtohighbox: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
   },
+  ascendingbutton :{
+    color: 'black', 
+    fontSize:18
+  }
 });
 
 export default secondtabstyles;
