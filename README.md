@@ -2,6 +2,8 @@
 
 ### Apk download link- https://drive.google.com/drive/folders/1XVQkrjTv7f45NnMObzMJ4kQq0YMnXAin?usp=sharing
 
+### Api used in this app - https://jsonplaceholder.typicode.com/comments
+
 ## App overview
 This is a simple app where you can see some users data. 
 On first page data is hown with pagination as you scroll more page we will be fetched from api and page number is shown on top according to your scrolling 
