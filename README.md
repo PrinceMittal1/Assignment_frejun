@@ -1,9 +1,11 @@
-# Chat-App
+# App
 
-### Apk download link- https://drive.google.com/drive/folders/1UK039Qhj7FvbfBrDuo_kun9mlypk8Dv8
+### Apk download link- https://drive.google.com/drive/folders/1XVQkrjTv7f45NnMObzMJ4kQq0YMnXAin?usp=sharing
 
 ## App overview
-Chit Chat is messaging app where you can send message personally & in group. You can create a group with as many numbers of you want. You can see the stories of the user register on our app. You can also add stories from gallery & also by directly clicking images from you phone camera.
+This is a simple app where you can see some users data. 
+On first page data is hown with pagination as you scroll more page we will be fetched from api and page number is shown on top according to your scrolling 
+On second page you can search user with according to thier name and sort the users according to their Id and when you tap on clear button all data will get in original conditon 
 
 ![WhatsApp Image 2023-03-15 at 7 52 33 AM](https://user-images.githubusercontent.com/111220289/225188689-9d93efb4-32d6-46ec-851c-a2386317dfc2.jpeg)
 ![WhatsApp Image 2023-03-15 at 7 52 32 AM](https://user-images.githubusercontent.com/111220289/225188719-bb07da10-9186-4eeb-b4b7-8ce167222d38.jpeg)
